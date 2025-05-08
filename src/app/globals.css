@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-geist-sans), sans-serif; /* Use Geist Sans as primary font */
+  @apply transition-colors duration-300 ease-in-out; /* Add transition for theme change */
+}
+
+@layer base {
+  :root {
+    /* Updated Light theme variables */
+    --background: 0 0% 100%; /* Pure White */
+    --foreground: 240 10% 3.9%; /* Slightly darker text for better contrast */
+    --card: 0 0% 100%; /* White cards */
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%; /* White popovers */
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 221 83% 53%; /* Slightly richer blue primary */
+    --primary-foreground: 0 0% 98%; /* White text on primary */
+    --secondary: 240 4.8% 95.9%; /* Lighter gray secondary */
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%; /* Same as secondary */
+    --muted-foreground: 240 3.8% 46.1%; /* Slightly lighter muted text */
+    --accent: 183 100% 40%; /* Slightly deeper Electric Blue/Cyan for accent */
+    --accent-foreground: 240 100% 5%; /* Dark contrast for accent */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%; /* Slightly lighter border */
+    --input: 240 5.9% 90%; /* Slightly lighter input background */
+    --ring: 221 83% 53%; /* Ring color matches primary */
+    --chart-1: 221 83% 53%; /* Chart colors adjusted for light theme */
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 0 0% 60%;
+    --radius: 0.5rem;
+
+    /* Keep sidebar variables consistent for now, or adjust if needed */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 100% 5%; /* Dark Space Tone #00001a */
+    --foreground: 0 0% 98%; /* Light text */
+    --card: 240 50% 10%; /* Slightly lighter dark blue */
+    --card-foreground: 0 0% 98%;
+    --popover: 240 50% 8%; /* Darker popover */
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%; /* Light primary text/elements */
+    --primary-foreground: 240 100% 5%; /* Dark text on primary */
+    --secondary: 240 30% 15%; /* Nebula-inspired dark purple/blue */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 20% 12%; /* Darker muted tone */
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 183 100% 74%; /* Electric Blue #7DF9FF */
+    --accent-foreground: 240 100% 5%; /* Dark blue/black for contrast on accent */
+    --destructive: 0 62.8% 50.6%; /* Adjusted destructive */
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 20% 20%; /* Subtle border */
+    --input: 240 20% 20%; /* Input background */
+    --ring: 183 100% 74%; /* Electric Blue for ring */
+    --chart-1: 183 100% 74%; /* Electric Blue */
+    --chart-2: 270 70% 60%; /* Nebula Purple */
+    --chart-3: 300 70% 60%; /* Nebula Pink */
+    --chart-4: 210 70% 60%; /* Nebula Blue */
+    --chart-5: 0 0% 80%; /* Light Grey */
+    --sidebar-background: 240 60% 8%; /* Darker sidebar */
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 183 100% 74%; /* Electric Blue */
+    --sidebar-primary-foreground: 240 100% 5%;
+    --sidebar-accent: 240 40% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 20% 20%;
+    --sidebar-ring: 183 100% 74%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Add a subtle starry background - adjusted for light mode */
+    background-image: radial-gradient(hsl(var(--muted-foreground) / 0.1) 0.5px, transparent 0.5px);
+    background-size: 15px 15px;
+    animation: starry-sky 120s linear infinite;
+  }
+}
+
+/* Animation for starry background */
+@keyframes starry-sky {
+  from { background-position: 0 0; }
+  to { background-position: -1000px 500px; }
+}
+
+/* Simple fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Animation for hero text slide-in */
+@keyframes slide-in-from-bottom {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in[class*="slide-in-from-bottom"] {
+  animation: slide-in-from-bottom var(--tw-animation-duration, 0.5s) var(--tw-animation-delay, 0s) cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+}
+
+/* Animation for hero button zoom-in */
+@keyframes zoom-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-in[class*="zoom-in"] {
+   animation: zoom-in var(--tw-animation-duration, 0.5s) var(--tw-animation-delay, 0s) cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+}
+
+
+/* Style for nebula gradient background */
+.nebula-gradient {
+  background: linear-gradient(135deg, hsl(270, 70%, 30%), hsl(210, 70%, 30%), hsl(300, 70%, 30%));
+  background-size: 200% 200%;
+  animation: nebula-flow 15s ease infinite;
+}
+
+@keyframes nebula-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Add keyframes for subtle floating animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Utility class for floating animation */
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+
+/* Add custom scrollbar styles for a more thematic feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background) / 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--accent) / 0.6);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent));
+}
+
+/* Perspective utility for 3D hover effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-gpu {
+  transform: translateZ(0); /* Promotes layer to GPU for better performance */
+}
