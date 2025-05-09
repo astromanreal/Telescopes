@@ -29,6 +29,9 @@ export default function RootLayout({
   return (
     // Remove hardcoded 'dark' class to allow dynamic theme switching
     <html lang="en" suppressHydrationWarning>
+      <head>
+      <meta name="google-site-verification" content="mac7aLjz9hgBPOeatEJp8fZ6RL2GRi8PeWQfgcITzFU" />
+      </head>
       <body
         className={cn(
           geistSans.variable,
